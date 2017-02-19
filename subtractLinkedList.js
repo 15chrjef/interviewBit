@@ -30,3 +30,32 @@ function(A){
         }
         return foundHead
 	}
+//O(n) space but alos O(n) time
+function(A){
+	    var arr = [];
+	    if(A.next === null){
+	        return A
+	    }
+        var head = A;
+        var last, second;
+        var initialCounter = -1;
+        while(head !== null){
+            initialCounter ++
+            head = head.next
+        }
+        var nodesToMap = Math.floor(initialCounter/2)
+        var startingGrabbedNode = initialCounter % 2 === 0 ? nodesToMap : nodesToMap + 1;
+        var headToUse = A;
+        for(var i = 0; i <= initialCounter; i++){
+            if(i >= startingGrabbedNode){
+                arr.unshift(headToUse.data)
+            }
+            headToUse = headToUse.next;
+        }
+        var anotherHead = A;
+        for(var i = 0; i < startingGrabbedNode; i++){
+            anotherHead.data = arr[i] - anotherHead.data
+            anotherHead = anotherHead.next
+        }
+        return A
+	}
