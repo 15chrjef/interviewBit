@@ -16,6 +16,7 @@ module.exports = {
                 verticies[i].push(i+1)
             }
         }
+	// function to recurse across possible adjacent numbers
         function search(key, val){
             if(Number(val) <= B){
                 if(val === '0'){
